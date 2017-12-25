@@ -1,41 +1,27 @@
-const express =require('express');
-const app = express();
+import express from 'express';
+
 const https = require('https');
+const axios = require('axios');
 
-const token = process.env.WRIKE_TOKEN;
+import {
+  graphqlExpress,
+  graphiqlExpress,
+} from 'graphql-server-express';
 
-const options = {
-  host: 'www.wrike.com',
-  port: '443',
-  path: '/api/v3/contacts',
-  method: 'GET',
-  headers: {
-    'Authorization': `Bearer ${token}`,
-  }
-};
+import bodyParser from 'body-parser';
+import { schema } from './src/schema';
 
-app.get('/', async (r, res, next) => {
-  const req = https.request(options, (res) => {
-    console.log('statusCode:', res.statusCode);
-    console.log('headers:', res.headers);
+const PORT = 4000;
+const server = express();
 
-    res.on('end', (a, d) => {
-      process.stdout.write(d);
-    });
-  });
-  res.on('end', (a, d) => {
-    console.log(a, d);
-  });
+server.use('/graphql', bodyParser.json(), graphqlExpress({
+  schema
+}));
 
-  req.on('error', (e) => {
-    console.error(e);
-  });
+server.use('/graphiql', graphiqlExpress({
+  endpointURL: '/graphql'
+}));
 
-  req.end();
-});
-
-
-
-app.listen('3000', function(){
-  console.log('Server running in 3000 port');
-});
+server.listen(PORT, () =>
+  console.log(`GraphQL Server is now running on http://localhost:${PORT}`)
+);
