@@ -4,8 +4,7 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon ./server.js --exec babel-node -e js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js --inspect"
   },
   "dependencies": {
     "axios": "^0.17.1",

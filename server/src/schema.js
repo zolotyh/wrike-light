@@ -1,15 +1,8 @@
-import {
-  makeExecutableSchema,
-  addMockFunctionsToSchema,
-} from 'graphql-tools';
+const {makeExecutableSchema}  = require('graphql-tools');
+const {resolvers} = require('./resolvers');
 
-import { resolvers } from './resolvers';
 
 const typeDefs = `
-type Channel {
-  id: ID!                # "!" denotes a required field
-  name: String
-}
 type Contact {
   id: ID!
   firstName: String
@@ -19,10 +12,9 @@ type Contact {
 # This type specifies the entry points into our API. In this case
 # there is only one - "channels" - which returns a list of channels.
 type Query {
-  channels: [Channel]    # "[]" means this is a list of channels
-  contacts: [Contact]
+  contacts(limit: Int, offset: Int): [Contact]
 }
 `;
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });
-export { schema };
+module.exports =  { schema };
