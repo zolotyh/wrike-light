@@ -1,1 +1,3 @@
-module.exports = process.env.WRIKE_TOKEN;
+module.exports = {
+  token: process.env.WRIKE_TOKEN
+};
