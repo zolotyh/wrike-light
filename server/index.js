@@ -4,6 +4,8 @@ const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 
 const { makeExecutableSchema} = require('graphql-tools');
 const { schema }  = require('./src/schema');
+const logger = require('./src/logger');
+const {domain} = require('./src/api/domain.js');
 
 const PORT = 4000;
 
@@ -24,5 +26,11 @@ server.use('/graphiql', graphiqlExpress({
 }));
 
 server.listen(PORT, () => {
-    console.log(`Gragphql server is running on ${PORT}`);
+  logger.info(`________________________
+  GraphQL server is succesfully running on http://localhost:${PORT} port
+  for domain ${domain}.
+
+  GraphiQL application is available on http://localhost:${PORT}/graphiql
+------------------------
+`);
 });

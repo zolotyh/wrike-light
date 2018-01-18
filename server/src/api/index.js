@@ -1,4 +1,4 @@
-const token = require('./get_api_token');
+const token = require('./token');
 const {wrikeAPIRequest} = require('./request.js');
 const {domain} = require('./domain.js');
 

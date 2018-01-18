@@ -1,5 +1,5 @@
-const {token} = require('./get_api_token.js');
-const {domain} = require('./domain.js');
+const {token} = require('./token');
+const {domain} = require('./domain');
 const request = require('request-promise');
 
 
