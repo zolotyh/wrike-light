@@ -1,9 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
+const {graphqlExpress, graphiqlExpress} = require('apollo-server-express');
 
-const { makeExecutableSchema} = require('graphql-tools');
-const { schema }  = require('./src/schema');
+const {schema} = require('./src/schema');
 const logger = require('./src/logger');
 const {domain} = require('./src/api/domain.js');
 
@@ -12,17 +11,17 @@ const PORT = 4000;
 const server = express();
 
 /**
-  Entry point for graphql
+ Entry point for graphql
  */
 server.use('/graphql', bodyParser.json(), graphqlExpress({
-    schema
+  schema
 }));
 
 /**
-  Entry point for graphql applications for request debugging
+ Entry point for graphql applications for request debugging
  */
 server.use('/graphiql', graphiqlExpress({
-    endpointURL: '/graphql'
+  endpointURL: '/graphql'
 }));
 
 server.listen(PORT, () => {
