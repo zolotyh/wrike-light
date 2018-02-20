@@ -19,7 +19,7 @@ enum TaskImportance {
 
 type Task {
   id: ID!
-  title: String
+  title: String 
   status: TaskStatus
   importance: TaskImportance
   description: String
