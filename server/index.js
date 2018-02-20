@@ -5,10 +5,15 @@ const {graphqlExpress, graphiqlExpress} = require('apollo-server-express');
 const {schema} = require('./src/schema');
 const logger = require('./src/logger');
 const {domain} = require('./src/api/domain.js');
+const cors = require('cors');
+
 
 const PORT = 4000;
 
 const server = express();
+
+
+server.use('*', cors({ origin: 'http://localhost:3000' }));
 
 /**
  Entry point for graphql
