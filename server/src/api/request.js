@@ -13,8 +13,8 @@ const wrikeAPIRequest = async ({query, headers}) => {
   });
 
   return JSON.parse(resp).data;
-}
+};
 
 module.exports = {
   wrikeAPIRequest
-}
+};

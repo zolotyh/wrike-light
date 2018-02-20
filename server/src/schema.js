@@ -1,24 +1,42 @@
-const {makeExecutableSchema}  = require('graphql-tools');
+const {makeExecutableSchema} = require('graphql-tools');
 const {resolvers} = require('./resolvers');
 
 
-const typeDefs = `
-type Contact {
-  id: ID!
-  firstName: String
-  lastName: String
-  avatarUrl: String
+const typeDefinitions = `
+
+enum TaskStatus {
+  Active 
+  Completed, 
+  Deferred, 
+  Cancelled
 }
+
+enum TaskImportance {
+  High
+  Normal
+  Low
+}
+
 type Task {
   id: ID!
+  status: TaskStatus
+  importance: TaskImportance
+  description: String
 }
-# This type specifies the entry points into our API. In this case
-# there is only one - "channels" - which returns a list of channels.
+
+type Contact {
+  id: ID!
+}
+
+
 type Query {
-  contacts(limit: Int, offset: Int): [Contact]
-  tasks(limit: Int, offset: Int): [Task]
+  tasks(limit: Int, offset: Int, folderId: Int): [Task]
+  contacts: [Contact]
 }
+
+
+
 `;
 
-const schema = makeExecutableSchema({ typeDefs, resolvers });
-module.exports =  { schema };
+const schema = makeExecutableSchema({typeDefs: typeDefinitions, resolvers});
+module.exports = {schema};

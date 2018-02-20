@@ -7,7 +7,7 @@
     "start": "NODE_TLS_REJECT_UNAUTHORIZED='0' WRIKE_DOMAIN='alpha.wrke.io' nodemon index.js --inspect"
   },
   "dependencies": {
-    "axios": "^0.17.1",
+    "babel-eslint": "^8.2.2",
     "body-parser": "^1.17.1",
     "eslint": "^4.15.0",
     "express": "^4.16.2",

@@ -3,9 +3,9 @@ const {contactsResolver} = require('./contact/index.js');
 
 const resolvers = {
   Query: {
-    contacts: contactsResolver,
-    tasks: taskResolver
-  },
+    tasks: taskResolver,
+    contacts: contactsResolver
+  }
 };
 
 module.exports = {
