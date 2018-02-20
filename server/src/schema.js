@@ -19,23 +19,27 @@ enum TaskImportance {
 
 type Task {
   id: ID!
+  title: String
   status: TaskStatus
   importance: TaskImportance
   description: String
 }
 
-type Contact {
+type Account {
   id: ID!
+  name: String
 }
 
+type FolderTreeItem {
+  id: ID!
+  title: String
+}
 
 type Query {
-  tasks(limit: Int, offset: Int, folderId: Int): [Task]
-  contacts: [Contact]
+  tasks(limit: Int, offset: Int, folderId: String): [Task]
+  getFolderTree(accountId: String): [FolderTreeItem]
+  accounts: [Account]
 }
-
-
-
 `;
 
 const schema = makeExecutableSchema({typeDefs: typeDefinitions, resolvers});
