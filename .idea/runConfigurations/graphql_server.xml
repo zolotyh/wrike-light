@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="graphql-server" type="NodeJSConfigurationType" factoryName="Node.js" path-to-js-file="server/index.js" working-dir="$PROJECT_DIR$">
+    <envs>
+      <env name="NODE_TLS_REJECT_UNAUTHORIZED" value="0" />
+      <env name="WRIKE_DOMAIN" value="alpha.wrke.io" />
+    </envs>
+    <method />
+  </configuration>
+</component>
