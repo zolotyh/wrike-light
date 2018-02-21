@@ -4,7 +4,7 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_TLS_REJECT_UNAUTHORIZED='0' WRIKE_DOMAIN='alpha.wrke.io' nodemon index.js --inspect"
+    "start": "NODE_TLS_REJECT_UNAUTHORIZED='0' WRIKE_DOMAIN='alpha.wrke.io' nodemon --inspect index.js"
   },
   "dependencies": {
     "babel-eslint": "^8.2.2",

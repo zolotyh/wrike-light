@@ -2,7 +2,6 @@ const {wrikeAPIRequest} = require('../api/index.js');
 
 
 const getFolderTree = async ({accountId}) => {
-  console.log(accountId);
   return await wrikeAPIRequest({query: `/accounts/${accountId}/folders`});
 };
 

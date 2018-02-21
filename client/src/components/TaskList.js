@@ -1,17 +1,16 @@
 import React from 'react';
 import gql from 'graphql-tag';
-import { graphql } from 'react-apollo';
-import {Paper} from "material-ui";
+import {graphql} from 'react-apollo';
+import {Paper, Subheader} from "material-ui";
 
 
 const style = {
   margin: '0 auto .5em',
-  padding: '.3em',
+  padding: '.3em 1em',
 };
 
 
 const TaskList = ({data: {loading, error, tasks}}) => {
-  console.log(tasks);
   if (loading) {
     return <p>Loading ...</p>;
   }
@@ -20,17 +19,25 @@ const TaskList = ({data: {loading, error, tasks}}) => {
   }
 
   return (
-    <div className="channelsList">
-      {tasks.map(ch =>
-        (<Paper style={style} key={ch.id} className="channel">{ch.title}</Paper>)
+    <div className="channelsList" style={{textAlign: 'left'}}>
+      {tasks.map(task =>
+        (<Paper style={style} key={task.id} className="channel">
+          <Subheader style={{paddingLeft: 0}}>{task.title}</Subheader>
+          <div dangerouslySetInnerHTML={{__html: task.description}}></div>
+
+          <div className={"wrapper"}>
+          </div>
+        </Paper>)
       )}
     </div>
   );
 };
 
+// "IEAAINB4I7777777"
+
 export const taskQuery = gql`
-  query ChannelsListQuery {
-      tasks(folderId: "IEAAINB4I7777777") {
+  query ChannelsListQuery($folderId: String!) {
+      tasks(folderId: $folderId) {
         id,
         description,
         importance,

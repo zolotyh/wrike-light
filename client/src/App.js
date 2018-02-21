@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
 import TextField from 'material-ui/TextField';
 import {Paper, RaisedButton} from "material-ui";
@@ -9,7 +9,6 @@ import {HttpLink} from 'apollo-link-http';
 import {InMemoryCache} from 'apollo-cache-inmemory'
 import {ApolloProvider} from 'react-apollo';
 import TaskList from './components/TaskList';
-
 
 
 const client = new ApolloClient({
@@ -23,11 +22,31 @@ const style = {
 };
 
 
-class App extends Component {
-  onSubmit(e) {
-    e.preventDefault();
-    console.log(123123);
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      value: 'IEAAINB4I7777777',
+      requestValue: 'IEAAINB4I7777777'
+    };
   }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+
+    this.setState({
+      requestValue: this.state.value
+    });
+  };
+
+  onChange = (e) => {
+    this.setState({
+      value: e.target.value,
+    });
+  };
+
 
   render() {
     return (
@@ -40,6 +59,7 @@ class App extends Component {
               <TextField
                 hintText="Enter folder id"
                 fullWidth={true}
+                value={this.state.value}
                 onChange={this.onChange}
               />
 
@@ -56,15 +76,15 @@ class App extends Component {
 
           </Paper>
 
-          <TaskList />
+
+
+          <TaskList folderId={this.state.requestValue}/>
 
         </div>
       </ApolloProvider>
     );
   }
 }
-
-
 
 
 export default App;
