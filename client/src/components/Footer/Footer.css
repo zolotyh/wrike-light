@@ -1,0 +1,16 @@
+.footer {
+  color: #fff;
+  font-size: 11px;
+  font-weight: 200;
+}
+.footer > a {
+  color: #ffffff;
+}
+
+.footer > a:visited {
+  color: #f0f0f0;
+}
+
+.footer > a:visited {
+  text-decoration: none;
+}

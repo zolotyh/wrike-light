@@ -1,0 +1,34 @@
+.main-content_sidebar {
+  grid-area: sidebar;
+  padding: 1rem 0.75rem;
+}
+
+.main-content_content {
+  grid-area: content;
+  position: relative;
+  padding: 1rem 0.75rem;
+}
+
+.main-content_header {
+  grid-area: header;
+  /*padding: .5rem 0.75rem;*/
+}
+
+.main-content_content_footer {
+  grid-area: footer;
+  padding: 1rem 0.75rem;
+}
+
+.main-content {
+  height: 100vh;
+  margin: 0 1rem;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: 4rem auto 2rem;
+  grid-template-areas:
+    "header  header  header header header"
+    "content content content content content"
+    "footer  footer  footer footer footer";
+}
+

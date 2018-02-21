@@ -1,0 +1,42 @@
+.menu {
+  display: flex;
+  font-weight: 100;
+  font-size: .9rem;
+}
+
+.menu > a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 1rem 0 0;
+  position: relative;
+}
+.menu > a:after {
+  content:  "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  bottom: 0px;
+  left: 0;
+  opacity: 0;
+  background: rgba(255,255,255, 0.8);
+  transition: all linear .3s;
+}
+.menu > .active {
+  font-weight: 300;
+}
+
+.menu > .active:after {
+  content:  "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  bottom: 0px;
+  left: 0;
+  opacity: 1;
+  background: rgba(255,255,255, 0.8);
+  transition: all linear .2s;
+}
+
+.menu > a:hover:after {
+  opacity: 1;
+}
