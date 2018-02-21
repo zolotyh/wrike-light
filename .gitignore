@@ -142,5 +142,3 @@ modules.xml
 .idea/sonarlint
 
 # End of https://www.gitignore.io/api/WebStorm,node,vim
-#
-#.idea/runConfigurations/server.xml

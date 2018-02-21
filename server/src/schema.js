@@ -23,7 +23,7 @@ type Task {
   status: TaskStatus
   importance: TaskImportance
   description: String
-  subtasks: [Task]
+  subTasks: [Task]
 }
 
 type Account {
