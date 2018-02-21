@@ -9,9 +9,6 @@ export default (props) => (
     <div className="main-content_header">
       <Header />
     </div>
-    {/*<Paper className={"main-content_sidebar"}>*/}
-      {/*sidebar*/}
-    {/*</Paper>*/}
     <Paper className={"content-wrapper main-content_content"}>
       {props.children}
     </Paper>
