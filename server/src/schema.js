@@ -3,7 +3,6 @@ const {resolvers} = require('./resolvers');
 
 
 const typeDefinitions = `
-
 enum TaskStatus {
   Active 
   Completed, 
@@ -23,23 +22,14 @@ type Task {
   status: TaskStatus
   importance: TaskImportance
   description: String
-  subTasks: [Task]
+  subTaskList: [Task]
 }
 
-type Account {
-  id: ID!
-  name: String
-}
 
-type FolderTreeItem {
-  id: ID!
-  title: String
-}
 
 type Query {
-  tasks(limit: Int, offset: Int, folderId: String): [Task]
-  getFolderTree(accountId: String): [FolderTreeItem]
-  accounts: [Account]
+  getSubTaskList(taskId: String!): [Task]
+  getSubTaskListFromFolder(folderId: String!): [Task]
 }
 `;
 

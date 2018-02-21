@@ -4,9 +4,14 @@ const {folderTreeResolver} = require('./folder/index.js');
 
 const resolvers = {
   Query: {
-    tasks: taskResolver,
-    accounts: accountResolver,
-    getFolderTree: folderTreeResolver
+    getSubTaskList: async (context, {taskId}) => await  [{id: 1}],
+    getSubTaskListFromFolder: async (context, {folderId}) => await [{id: 2}]
+  },
+  Task: {
+    subTaskList: async (context) => await [{
+      id: '12',
+      title: 'test'
+    }]
   }
 };
 

@@ -19,22 +19,14 @@ type Task {
   status: TaskStatus
   importance: TaskImportance
   description: String
+  subTaskList: [Task]
 }
 
-type Account {
-  id: ID!
-  name: String
-}
 
-type FolderTreeItem {
-  id: ID!
-  title: String
-}
 
 type Query {
-  tasks(limit: Int, offset: Int, folderId: String): [Task]
-  getFolderTree(accountId: String): [FolderTreeItem]
-  accounts: [Account]
+  getSubTaskList(taskId: String): [Task]
+  getSubTaskListFromFolder(folderId: String): [Task]
 }
 `;
 

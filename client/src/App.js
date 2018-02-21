@@ -22,8 +22,9 @@ const App = () => (
       <MuiThemeProvider>
         <BrowserRouter>
           <Switch>
-            <Route exact path='/help' component={Help} />
+            <Route exact path='/help' component={Help}/>
             <Route exact path='/' component={TaskListPrototype}/>
+            <Route exact path='/folder/:folderId' component={TaskListPrototype}/>
             <Route path='/' component={NotFound}/>
           </Switch>
         </BrowserRouter>

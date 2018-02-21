@@ -1,7 +1,7 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
 
-class FolderTaskList extends Component {
-  render(){
+export default class FolderTaskList extends Component {
+  render() {
     return (<div>test</div>)
   }
 }
