@@ -6,20 +6,30 @@ const getTasks = async ({folderId}) => {
 };
 
 const getOneTask = async (taskId) => {
-  return await wrikeAPIRequest({query: `/tasks/${taskId}`});
+  const query = `/tasks/${taskId}`;
+  return await wrikeAPIRequest({query: query});
 };
 
-
 const taskLoader = new Dataloader(async (keys) => {
+  // TODO-add batch support for batch task loading
   return Promise.all(keys.map(taskId => getOneTask(taskId)));
 });
 
+
 const taskResolver = async (context, {folderId}) => {
   const tasks = await  getTasks({folderId});
-  return tasks.map(async i => {
-    const subTasks = await  taskLoader.load(i.id);
-    i.subTasks = subTasks;
-    return i;
+
+  return tasks.map(async task => {
+    task.subTasks = [];
+
+    for (let subTaskId of task.subTaskIds) {
+      const subTask = await  taskLoader.load(subTaskId);
+      if (subTask.length) {
+        task.subTasks.push(subTask[0]);
+      }
+    }
+
+    return task;
   });
 };
 

@@ -18,6 +18,12 @@ const TaskList = ({data: {loading, error, tasks}}) => {
     return <p>{error.message}</p>;
   }
 
+  const getSubtasks = (task) => {
+    return task.subTasks.map(i => (
+      <div>{i.title}</div>
+    ));
+  };
+
   return (
     <div className="channelsList" style={{textAlign: 'left'}}>
       {tasks.map(task =>
@@ -26,6 +32,7 @@ const TaskList = ({data: {loading, error, tasks}}) => {
           <div dangerouslySetInnerHTML={{__html: task.description}}></div>
 
           <div className={"wrapper"}>
+            {task.subTasks.length > 0 ? getSubtasks(task): ''}
           </div>
         </Paper>)
       )}
@@ -33,15 +40,17 @@ const TaskList = ({data: {loading, error, tasks}}) => {
   );
 };
 
-// "IEAAINB4I7777777"
-
 export const taskQuery = gql`
   query ChannelsListQuery($folderId: String!) {
       tasks(folderId: $folderId) {
-        id,
-        description,
-        importance,
+        id
+        description
+        importance
         title
+        subTasks {
+          id
+          title
+        }
       }
   }
 `;
