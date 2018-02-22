@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import MainContent from "../MainContent/MainContent";
-import FolderSearchForm from "../FolderSearchForm/FolderSearchForm";
-import {Paper} from "material-ui";
-import './TaskListPrototype.css'
-import TaskList from "../TaskList/TaskList";
+import MainContent from '../MainContent/MainContent';
+import FolderSearchForm from '../FolderSearchForm/FolderSearchForm';
+import {Paper} from 'material-ui';
+import './TaskListPrototype.css';
+import TaskList from '../TaskList/TaskList';
 
 
 export default class TaskListPrototype extends Component {
@@ -16,18 +16,18 @@ export default class TaskListPrototype extends Component {
 
     this.state = {
       folderId: folderId
-    }
+    };
   }
 
   _onSubmit = (value) => {
     this.props.history.push(`/folder/${value}`);
     this.setState({
       folderId: value
-    })
+    });
   };
 
 
-  render = () => {
+  render() {
     return (
       <MainContent>
         <FolderSearchForm onSubmit={this._onSubmit}/>
@@ -42,7 +42,7 @@ export default class TaskListPrototype extends Component {
   };
 
   _getEmptyResult = () => {
-    return <Paper className={'task-list-wrapper'} rounded={true}>Can't render new task list</Paper>
+    return <Paper className={'task-list-wrapper'} rounded={true}>Can't render new task list</Paper>;
   }
 }
 

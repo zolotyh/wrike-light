@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {RaisedButton, TextField} from "material-ui";
+import {RaisedButton, TextField} from 'material-ui';
 
 
 export default class FolderSearchForm extends Component {
@@ -10,21 +10,23 @@ export default class FolderSearchForm extends Component {
   }
 
   state = {
-    defaultValue: "IEAAINB4I7777777",
-    value: "IEAAINB4I7777777"
+    defaultValue: 'IEAAINB4I7777777',
+    value: 'IEAAINB4I7777777'
   };
 
-  render = () => (
-    <form onSubmit={this.onSubmit}>
-      <TextField
-        hintText="Enter folderId"
-        onChange={this.onChange}
-        defaultValue={this.state.defaultValue}
-      />
-      <br/>
-      <RaisedButton label="Find" primary={true} onClick={this.onSubmit}/>
-    </form>
-  );
+  render() {
+    return (
+      <form onSubmit={this.onSubmit}>
+        <TextField
+          hintText='Enter folderId'
+          onChange={this.onChange}
+          defaultValue={this.state.defaultValue}
+        />
+        <br/>
+        <RaisedButton label='Find' primary={true} onClick={this.onSubmit}/>
+      </form>
+    );
+  };
 
   onSubmit = (e) => {
     e.preventDefault();

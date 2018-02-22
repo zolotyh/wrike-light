@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import gql from "graphql-tag";
-import StupidTaskList from "../TaskList/StupidTaskList";
-import {graphql} from "react-apollo";
-import {Checkbox} from "material-ui";
+import gql from 'graphql-tag';
+import StupidTaskList from '../TaskList/StupidTaskList';
+import {graphql} from 'react-apollo';
+import {Checkbox} from 'material-ui';
 
 
 const taskQuery = gql`
@@ -37,7 +37,7 @@ const SubTaskList = graphql(taskQuery)(TaskList);
 
 export default class Task extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.task = props.task;
   }
@@ -54,7 +54,7 @@ export default class Task extends Component {
     });
   };
 
-  render = () => {
+  render() {
     return <span>
 
       {this.task.title}
@@ -66,6 +66,6 @@ export default class Task extends Component {
       />
 
       {this.task.subTaskList.length && this.state.checked ? <SubTaskList taskId={this.task.id}/> : ''}
-    </span>
+    </span>;
   };
 }
