@@ -1,5 +1,5 @@
-import React from "react";
-import StupidTaskList from "./StupidTaskList";
+import React from 'react';
+import StupidTaskList from './StupidTaskList';
 
 export default (data) => {
 

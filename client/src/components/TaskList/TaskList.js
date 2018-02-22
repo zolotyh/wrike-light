@@ -1,7 +1,6 @@
-import React from "react";
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 import {graphql} from 'react-apollo';
-import SmartTaskList from "./SmartTaskList";
+import SmartTaskList from './SmartTaskList';
 
 
 export const taskQuery = gql`

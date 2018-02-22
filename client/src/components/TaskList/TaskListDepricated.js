@@ -27,11 +27,11 @@ const TaskList = ({data: {loading, error, tasks}}) => {
   return (
     <div className="channelsList" style={{textAlign: 'left'}}>
       {tasks.map(task =>
-        (<Paper style={style} key={task.id} className="channel">
+        (<Paper style={style} key={task.id} className='channel'>
           <Subheader style={{paddingLeft: 0}}>{task.title}</Subheader>
           <div dangerouslySetInnerHTML={{__html: task.description}}></div>
 
-          <div className={"wrapper"}>
+          <div className={'wrapper'}>
             {task.subTasks.length > 0 ? getSubtasks(task): ''}
           </div>
         </Paper>)
