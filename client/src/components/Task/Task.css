@@ -5,3 +5,7 @@
 .task_section--close {
   display: none;
 }
+
+.task_header {
+  cursor: pointer;
+}

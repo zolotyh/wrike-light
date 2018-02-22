@@ -1,5 +1,5 @@
 import React from 'react';
-import icon from './right.svg';
+import icon from '../../Tree/ListItem/right.svg';
 import './OpenClose.css';
 
 export default ({isOpened, onClick}) => (

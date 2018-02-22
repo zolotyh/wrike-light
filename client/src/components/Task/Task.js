@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import gql from 'graphql-tag';
 import StupidTaskList from '../TaskList/StupidTaskList';
 import {graphql} from 'react-apollo';
-import OpenClose from "./OpenClose/OpenClose";
+import OpenClose from './OpenClose/OpenClose';
+import './Task.css';
 
 
 const taskQuery = gql`
@@ -47,7 +48,7 @@ export default class Task extends Component {
     task: null
   };
 
-  updateCheck = () => {
+  _updateCheck = () => {
     this.setState((oldState) => {
       return {
         checked: !oldState.checked,
@@ -55,17 +56,24 @@ export default class Task extends Component {
     });
   };
 
+  _getDetails = () => {
+    return (
+      <section className={this.state.checked ? 'task_section task_section--open': 'task_section task_section--closed'}>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam asperiores consequuntur cupiditate dolorem error exercitationem illo illum ipsam iusto magnam neque nihil, nulla perspiciatis quos ratione sint suscipit voluptate voluptatem.
+      </section>
+    );
+  };
+
   render() {
     if (this.state.task) {
       return (<span className={'task'}>
-        <section className={'task_task-header'}>
+        <section onClick={this._updateCheck} className={'task_header'}>
           <span className='checked-wrapper'>
-            <OpenClose onClick={this.updateCheck} isOpened={this.state.checked}/>
+            <OpenClose isOpened={this.state.checked}/>
           </span>
           <span className="title">{this.state.task.title}</span>
         </section>
-        <section className={this.state.checked ? 'task_section task_section--open': 'task_section task_section--closed'}>
-        </section>
+        {this.state.checked ? this._getDetails() : ''}
       </span>);
     } else {
       return (<span>no task</span>);

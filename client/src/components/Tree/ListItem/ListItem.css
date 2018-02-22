@@ -1,0 +1,37 @@
+.list-item {
+  list-style: none;
+}
+
+.list-item_wrapper--closed {
+  display: none;
+}
+
+.list-item_expander {
+  width: 1rem;
+  height: 1rem;
+  margin-right: .5rem;
+}
+
+.list-item_sublist-container {
+}
+
+.list-item_img {
+  width: 1rem;
+  height: 1rem;
+}
+
+.list-item_img--closed {
+
+}
+
+.list-item_img--open {
+  transform: rotate(90deg);
+}
+
+.list_item_title-wrapper {
+  display: flex;
+}
+
+.list_item_title {
+
+}
