@@ -1,0 +1,7 @@
+.task_section--open {
+  display: block;
+}
+
+.task_section--close {
+  display: none;
+}

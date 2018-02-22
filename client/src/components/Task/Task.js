@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import gql from 'graphql-tag';
 import StupidTaskList from '../TaskList/StupidTaskList';
 import {graphql} from 'react-apollo';
-import {Checkbox} from 'material-ui';
+import OpenClose from "./OpenClose/OpenClose";
 
 
 const taskQuery = gql`
@@ -39,11 +39,12 @@ export default class Task extends Component {
 
   constructor(props) {
     super(props);
-    this.task = props.task;
+    this.state.task = props.task;
   }
 
   state = {
     checked: false,
+    task: null
   };
 
   updateCheck = () => {
@@ -55,17 +56,19 @@ export default class Task extends Component {
   };
 
   render() {
-    return <span>
-
-      {this.task.title}
-
-      <Checkbox
-        style={{display: 'inline-block', width: 'auto'}}
-        checked={this.state.checked}
-        onCheck={this.updateCheck}
-      />
-
-      {this.task.subTaskList.length && this.state.checked ? <SubTaskList taskId={this.task.id}/> : ''}
-    </span>;
+    if (this.state.task) {
+      return (<span className={'task'}>
+        <section className={'task_task-header'}>
+          <span className='checked-wrapper'>
+            <OpenClose onClick={this.updateCheck} isOpened={this.state.checked}/>
+          </span>
+          <span className="title">{this.state.task.title}</span>
+        </section>
+        <section className={this.state.checked ? 'task_section task_section--open': 'task_section task_section--closed'}>
+        </section>
+      </span>);
+    } else {
+      return (<span>no task</span>);
+    }
   };
 }

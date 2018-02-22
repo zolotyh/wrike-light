@@ -4,6 +4,7 @@ import FolderSearchForm from '../FolderSearchForm/FolderSearchForm';
 import {Paper} from 'material-ui';
 import './TaskListPrototype.css';
 import TaskList from '../TaskList/TaskList';
+import Task from "../Task/Task";
 
 
 export default class TaskListPrototype extends Component {
@@ -30,6 +31,7 @@ export default class TaskListPrototype extends Component {
   render() {
     return (
       <MainContent>
+        <Task></Task>
         <FolderSearchForm onSubmit={this._onSubmit}/>
         <br/>
         {this.state.folderId ? this._getTaskListByFolderId() : this._getEmptyResult()}
