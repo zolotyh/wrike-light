@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import SubList from '../SubList/SubList';
 import RightIcon from './RightIcon.svg';
 import './ListItem.css';
+import {Paper} from 'material-ui';
+import GraphQLSubTaskList from '../SubList/GraphQLSubTaskList';
 
 
 export default class ListItem extends Component {
@@ -17,16 +18,19 @@ export default class ListItem extends Component {
 
   render() {
     return <li className={'list-item'}>
-      <div className={'list_item_title-wrapper'} onClick={this._onClick}>
+      <Paper className={'list-item_title-wrapper'}
+        style={{'cursor': this._showExpander() ? 'pointer' : 'default'}}
+        onClick={this._onClick}>
+
         <div className="list-item_expander">
           {this._getExpander()}
         </div>
         <div className="list-item_title">
           {this.state.item.title}
         </div>
-      </div>
+      </Paper>
       <div className={this._getWrapperClass()}>
-        {this.state.item.subItems.length > 0 ? <SubList items={this.state.item.subItems}/> : ''}
+        {this.state.item.subItemList && this.state.item.subItemList.length &&  this.state.isOpen > 0 ? <GraphQLSubTaskList taskId={this.state.item.id}/> : ''}
       </div>
 
     </li>;
@@ -42,7 +46,7 @@ export default class ListItem extends Component {
 
   _getExpanderClassName = () => this.state.isOpen ? 'list-item_img list-item_img--open' : 'list-item_img list-item_img--closed';
 
-  _showExpander = () => this.state.item.subItems.length > 0;
+  _showExpander = () => this.state.item.subItemList && this.state.item.subItemList.length > 0;
 
   _getWrapperClass() {
     return 'list-item_wrapper list-item_wrapper' + (this.state.isOpen ? '--open' : '--closed');

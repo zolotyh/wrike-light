@@ -24,7 +24,8 @@
     "graphql-tools": "^2.14.1",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
-    "winston": "^3.0.0-rc1"
+    "winston": "^3.0.0-rc1",
+    "common": "../common"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
