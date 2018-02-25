@@ -1,7 +1,7 @@
 import React from 'react';
 import MainContent from '../MainContent/MainContent';
 import './TaskListPrototype.css';
-import GraphQLFolderTaskSubList from '../Tree/SubList/GraphQLFolderTaskSubList';
+import GraphQLFolderTaskSubList from './SubList/GraphQLFolderTaskSubList';
 
 export default () => (
   <MainContent>

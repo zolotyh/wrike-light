@@ -2,6 +2,7 @@ import React from 'react';
 import ListItem from '../ListItem/ListItem';
 
 export default ({loading, error, data}) => {
+  console.log(data);
   if (loading) {
     return <div>loading.</div>;
   } else if (error) {
@@ -10,8 +11,6 @@ export default ({loading, error, data}) => {
 
   if(data){
     let items = [];
-
-    console.log(data.getFolderTaskList);
 
     Array.prototype.push.apply(items,data.getFolderTaskList ? data.getFolderTaskList : data.getSubTaskList );
 
