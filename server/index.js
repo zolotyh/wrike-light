@@ -13,7 +13,7 @@ const PORT = 4000;
 const server = express();
 
 
-server.use('*', cors({ origin: 'http://localhost:3000' }));
+server.use('*', cors({origin: 'http://localhost:3000'}));
 
 /**
  Entry point for graphql
@@ -30,7 +30,7 @@ server.use('/graphiql', graphiqlExpress({
 }));
 
 server.listen(PORT, () => {
-  logger.info(`________________________
+  logger.info(`\n________________________
   GraphQL server is succesfully running on http://localhost:${PORT} port
   for domain ${domain}.
 

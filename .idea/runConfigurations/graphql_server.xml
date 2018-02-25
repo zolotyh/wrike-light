@@ -3,6 +3,7 @@
     <envs>
       <env name="NODE_TLS_REJECT_UNAUTHORIZED" value="0" />
       <env name="WRIKE_DOMAIN" value="alpha.wrke.io" />
+      <env name="WRIKE_LOG_LEVEL" value="debug" />
     </envs>
     <method />
   </configuration>

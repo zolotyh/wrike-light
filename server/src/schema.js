@@ -1,22 +1,22 @@
 const {wrikeAPIRequest} = require('./api');
 const {makeExecutableSchema} = require('graphql-tools');
 const Dataloader = require('dataloader');
-const logger = require('logger');
+const logger = require('./logger');
 
 
 const getOneTask = async ({taskId}) => {
-  const query = `/tasks/${taskId}`;
-  logger.log(query);
-  return await wrikeAPIRequest({query: query});
+  return await wrikeAPIRequest({query: `/tasks/${taskId}`});
 };
 
 const taskLoader = new Dataloader(async (keys) => {
   // TODO-add batch support for batch task loading
-  logger.log('START BATCH ');
+  logger.debug('***** START BATCH *****');
+  logger.debug('');
   const result = await Promise.all(keys.map(taskId => {
     return getOneTask({taskId});
   }));
-  logger.log('END BATCH ');
+  logger.debug('');
+  logger.debug('***** END BATCH *****');
   return result;
 });
 
@@ -47,7 +47,6 @@ const getTasksFromFolder = async ({folderId}) => {
 };
 
 
-
 const resolvers = {
   Query: {
     getSubTaskList: async (context, {taskId}) => {
@@ -59,7 +58,7 @@ const resolvers = {
         for (let subTaskId of task[0].subTaskIds) {
           taskLoader.load(subTaskId).then(subTask => {
             if (subTask.length) {
-              const s =  subTask[0];
+              const s = subTask[0];
               s.subItemList = s.subTaskIds.map(i => {
                 return {'id': i};
               });
