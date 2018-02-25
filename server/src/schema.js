@@ -1,21 +1,22 @@
 const {wrikeAPIRequest} = require('./api');
 const {makeExecutableSchema} = require('graphql-tools');
 const Dataloader = require('dataloader');
+const logger = require('logger');
 
 
 const getOneTask = async ({taskId}) => {
   const query = `/tasks/${taskId}`;
-  console.log(query);
+  logger.log(query);
   return await wrikeAPIRequest({query: query});
 };
 
 const taskLoader = new Dataloader(async (keys) => {
   // TODO-add batch support for batch task loading
-  console.log('START BATCH ');
+  logger.log('START BATCH ');
   const result = await Promise.all(keys.map(taskId => {
     return getOneTask({taskId});
   }));
-  console.log('END BATCH ');
+  logger.log('END BATCH ');
   return result;
 });
 
@@ -45,15 +46,6 @@ const getTasksFromFolder = async ({folderId}) => {
 
 };
 
-const taskLoader2 = new Dataloader(async (keys) => {
-  // TODO-add batch support for batch task loading
-  console.log('START BATCH ');
-  const result = await Promise.all(keys.map(taskId => {
-    return getOneTask({taskId});
-  }));
-  console.log('END BATCH ');
-  return result;
-});
 
 
 const resolvers = {

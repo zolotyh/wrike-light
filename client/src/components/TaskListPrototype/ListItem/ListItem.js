@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import RightIcon from './RightIcon.svg';
 import './ListItem.css';
 import {Paper} from 'material-ui';
+import Task from '../Task/Task';
 import GraphQLSubTaskList from '../SubList/GraphQLSubTaskList';
 
 
@@ -26,7 +27,7 @@ export default class ListItem extends Component {
           {this._getExpander()}
         </div>
         <div className="list-item_title">
-          {this.state.item.title}
+          <Task task={this.state.item}/>
         </div>
       </Paper>
       <div className={this._getWrapperClass()}>
