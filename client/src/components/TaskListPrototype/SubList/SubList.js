@@ -2,7 +2,6 @@ import React from 'react';
 import ListItem from '../ListItem/ListItem';
 
 export default ({loading, error, data}) => {
-  console.log(data);
   if (loading) {
     return <div>loading.</div>;
   } else if (error) {

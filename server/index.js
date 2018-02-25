@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const {graphqlExpress, graphiqlExpress} = require('apollo-server-express');
 
-const {schema} = require('./src/schema');
+const schema = require('./src/schema');
 const logger = require('./src/logger');
 const {domain} = require('./src/api/domain.js');
 const cors = require('cors');
